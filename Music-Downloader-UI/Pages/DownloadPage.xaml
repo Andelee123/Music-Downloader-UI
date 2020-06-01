@@ -8,18 +8,18 @@
       mc:Ignorable="d" 
       FontSize="12"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DownloadPage" Height="339" Width="492">
+      Title="DownloadPage" Height="394" Width="587">
 
     <Grid>
         <DataGrid HorizontalAlignment="Left" 
                   Name="List"
-                  Height="300" 
+                  Height="359" 
                   VerticalAlignment="Top" 
-                  Width="472" 
+                  Width="567" 
                   pu:DataGridHelper.HeaderMinHeight="25"
                   CanUserAddRows="False"
                   AutoGenerateColumns="False"
-                  BorderThickness="1" Margin="10,0,0,0"
+                  BorderThickness="1" Margin="11,0,0,0"
                   ItemsSource="{Binding listitem}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="标题" Width="*" Binding="{Binding Title}"/>
@@ -28,8 +28,9 @@
                 <DataGridTextColumn Header="状态" Width="*" Binding="{Binding State}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="打开音乐保存路径" Foreground="Blue" PreviewMouseDown="Label_PreviewMouseDown"  HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" Height="25"/>
-        <Label Content="清除已下载项" Foreground="Blue" PreviewMouseDown="Label_PreviewMouseDown_1"  HorizontalAlignment="Left" Margin="400,300,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="打开音乐保存路径" Foreground="Blue" PreviewMouseDown="Label_PreviewMouseDown"  HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="清除已下载项" Foreground="Blue" PreviewMouseDown="Label_PreviewMouseDown_1"  HorizontalAlignment="Left" Margin="496,359,0,0" VerticalAlignment="Top" Height="25"/>
+        <Label Content="音源1 歌词可能出现无法下载的情况，过段时间再试" HorizontalAlignment="Center" Height="25" Margin="167,360,118,0" VerticalAlignment="Top" Width="302"/>
 
     </Grid>
 </Page>

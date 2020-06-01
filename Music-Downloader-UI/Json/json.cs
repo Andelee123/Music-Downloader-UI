@@ -223,6 +223,7 @@ namespace MusicDownloader.Json
         public string State { get; set; }
         public int Api { get; set; }
         public string strMediaMid { get; set; }
+        public bool IsDownloading { get; set; }
     }
 
     public class NeteaseAlbum
@@ -279,12 +280,13 @@ namespace MusicDownloader.Json
 
         public class data
         {
-            public string lrc { get; set; }
+            public string lyric { get; set; }
         }
     }
 
     public class QQmusicdetails
     {
+        public int result { get; set; }
         public string data { get; set; }
     }
 
@@ -329,7 +331,7 @@ namespace MusicDownloader.Json
         }
 
         public class list
-        { 
+        {
             public string mid { get; set; }
             public string title { get; set; }
             public List<singer> singer { get; set; }
@@ -338,7 +340,7 @@ namespace MusicDownloader.Json
         }
 
         public class singer
-        { 
+        {
             public string title { get; set; }
         }
 
@@ -349,8 +351,41 @@ namespace MusicDownloader.Json
         }
 
         public class ksong
-        { 
+        {
             public string mid { get; set; }
+        }
+    }
+
+    public class QQTopList
+    {
+        public class Root
+        {
+            public data data { get; set; }
+        }
+
+        public class data
+        {
+            public List<list> list { get; set; }
+        }
+
+        public class list
+        {
+            public string title { get; set; }
+            public string singerName { get; set; }
+            public string mid { get; set; }
+            public album album { get; set; }
+            public file file { get; set; }
+        }
+
+        public class album
+        {
+            public string title { get; set; }
+            public string mid { get; set; }
+        }
+
+        public class file
+        {
+            public string media_mid { get; set; }
         }
     }
 }

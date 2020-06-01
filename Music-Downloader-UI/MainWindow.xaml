@@ -10,24 +10,24 @@
             pu:WindowXCaption.Header=" "
             BorderThickness="0"
             ContentRendered="WindowX_ContentRendered"
-            Title="Music Downloader" Height="365" Width="643" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="Icon.ico">
+            Title="Music Downloader" Height="421" Width="738" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="Icon.ico">
     <pu:WindowXCaption.ExtendControl>
         <Button Click="BlogButton_Click" pu:ButtonHelper.ButtonStyle="Link" Content="NiTian1207" FontSize="11" Margin="0 0 10 0" VerticalAlignment="Center"/>
     </pu:WindowXCaption.ExtendControl>
     <Grid>
         <Grid Background="#3E3E3E" HorizontalAlignment="Left" Margin="0,-36.667,0,0" Width="146.667">
-            <TextBlock Block.TextAlignment="Center" FontSize="20" Height="70" Margin="10,9.667,10,0" TextWrapping="Wrap" VerticalAlignment="Top">
+            <TextBlock Block.TextAlignment="Center" FontSize="20" Height="62" Margin="10,7,9.667,0" TextWrapping="Wrap" VerticalAlignment="Top">
                 <Run FontSize="28" FontFamily="Microsoft YaHei UI Light" Foreground="White">Music</Run>
-                <Run FontSize="18" FontFamily="Microsoft YaHei UI Light" Foreground="#FF6CDBF3">Downloader</Run>
+                <Run FontSize="18" FontFamily="Microsoft YaHei UI Light" Foreground="LightBlue">Downloader</Run>
                 <TextBlock.Effect>
-                    <DropShadowEffect Color="White" ShadowDepth="1" BlurRadius="5" Opacity="0.7"/>
+                    <DropShadowEffect Color="LightGray" ShadowDepth="1" BlurRadius="0" Opacity="1"/>
                 </TextBlock.Effect>
             </TextBlock>
             <TreeView Name="LeftMenu"
                 Background="Transparent" 
                 Foreground="White"
                 FontFamily="Microsoft YaHei UI Light"
-                Margin="0,79.667,0,84"
+                Margin="0,97,-0.333,18.667"
                 pu:TreeViewHelper.ItemHeight="40"
                 pu:TreeViewHelper.TreeViewStyle="Modern"
                 pu:TreeViewHelper.SelectedBackground="#22FFFFFF"
@@ -41,7 +41,10 @@
                               pu:TreeViewHelper.ItemIcon="&#xf013;"/>
                 <TreeViewItem Header="赞助"
                               pu:TreeViewHelper.ItemIcon="&#xf118;"/>
+                <TreeViewItem Header="反馈"
+                    pu:TreeViewHelper.ItemIcon="&#xf188;"/>
             </TreeView>
+            <TextBlock Name="VerTextblock" FontSize="14" FontFamily="Microsoft YaHei UI Light" Opacity="0.8" HorizontalAlignment="Center" Foreground="Gray" Block.TextAlignment="Center" Margin="34,71,32.667,333.667" TextWrapping="Wrap" Text="Version" Width="80"/>
         </Grid>
         <Grid Margin="146.667,0,0,0">
             <Frame Name="frame" NavigationUIVisibility="Hidden"/>

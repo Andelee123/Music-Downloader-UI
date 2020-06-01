@@ -28,7 +28,7 @@ namespace MusicDownloader
         List<ListModel> listitem = new List<ListModel>();
         Music music = null;
 
-        class ListModel
+        class ListModel : INotifyPropertyChanged
         {
             [DisplayName("标题")]
             public string Title { get; set; }
@@ -38,6 +38,14 @@ namespace MusicDownloader
             public string Album { get; set; }
             [DisplayName("状态")]
             public string State { get; set; }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            public void OnPropertyChanged(string propertyName)
+            {
+                if (this.PropertyChanged != null)
+                    this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         public DownloadPage(Music m)
@@ -51,6 +59,7 @@ namespace MusicDownloader
 
         public void UpdateList()
         {
+            bool isadd = false;
             for (int i = 0; i < music.downloadlist.Count; i++)
             {
                 bool exist = false;
@@ -59,11 +68,13 @@ namespace MusicDownloader
                     if (l.Title == music.downloadlist[i].Title && l.Singer == music.downloadlist[i].Singer && l.Album == music.downloadlist[i].Album)
                     {
                         l.State = music.downloadlist[i].State;
+                        l.OnPropertyChanged("State");
                         exist = true;
                     }
                 }
                 if (!exist)
                 {
+                    isadd = true;
                     listitem.Add(new ListModel
                     {
                         Album = music.downloadlist[i].Album,
@@ -74,11 +85,14 @@ namespace MusicDownloader
                     );
                 }
             }
-            Dispatcher.Invoke(new Action(() =>
+            if (isadd)
             {
-                List.ItemsSource = listitem;
-                List.Items.Refresh();
-            }));
+                Dispatcher.Invoke(new Action(() =>
+                {
+                    List.ItemsSource = listitem;
+                    List.Items.Refresh();
+                }));
+            }
         }
 
         private void Label_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -92,7 +106,7 @@ namespace MusicDownloader
             {
                 for (int i = 0; i < listitem.Count; i++)
                 {
-                    if (listitem[i].State == "下载完成" || listitem[i].State == "无版权" || listitem[i].State == "下载错误")
+                    if (listitem[i].State == "下载完成" || listitem[i].State == "无版权" || listitem[i].State == "下载错误" || listitem[i].State == "音乐已存在")
                     {
                         listitem.RemoveAt(i);
                     }
